@@ -14,30 +14,30 @@ public class ResourceCentre {
 
 		int option = 0;
 
-		while (option != 5) {
+		while (option != OPTION_QUIT()) {
 
 			ResourceCentre.menu();
 			option = Helper.readInt("Enter an option > ");
 
-			if (option == 1) {
+			if (option == OPTION_VIEW()) {
 				// View all items
 				ResourceCentre.viewAllCamcorder(camcorderList);
 				ResourceCentre.viewAllChromebook(chromebookList);
 
-			} else if (option == 2) {
+			} else if (option == OPTION_ADD()) {
 				// Add a new item
 				ResourceCentre.setHeader("ADD");
 				itemTypeMenu();
 
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
-				if (itemType == 1) {
+				if (ITEM_TYPE_COMCORDER(itemType)) {
 					// Add a camcorder
 					Camcorder cc = inputCamcorder();
 					ResourceCentre.addCamcorder(camcorderList, cc);
 					System.out.println("Camcorder added");
 
-				} else if (itemType == 2) {
+				} else if (ITEM_TYPE_CHROMEBOOK(itemType)) {
 					// Add Chromebook
 					Chromebook cb = inputChromebook();
 					ResourceCentre.addChromebook(chromebookList, cb);
@@ -47,40 +47,40 @@ public class ResourceCentre {
 					System.out.println("Invalid type");
 				}
 
-			} else if (option == 3) {
+			} else if (option == OPTION_LOAN()) {
 				// Loan item
 				ResourceCentre.setHeader("LOAN");
 				itemTypeMenu();
 
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
-				if (itemType == 1) {
+				if (ITEM_TYPE_CAMCODER(itemType)) {
 					// Loan camcorder
 					ResourceCentre.loanCamcorder(camcorderList);
-				} else if (itemType == 2) {
+				} else if (ITEM_TYPE_CHROMEBOOK(itemType)) {
 					// Loan Chromebook
 					ResourceCentre.loanChromebook(chromebookList);
 				} else {
 					System.out.println("Invalid type");
 				}
 
-			} else if (option == 4) {
+			} else if (option == OPTION_RETURN()) {
 				// Return item
 				ResourceCentre.setHeader("RETURN");
 				itemTypeMenu();
 
 				int itemType = Helper.readInt("Enter option to select item type > ");
-				if (itemType == 1) {
+				if (ITEM_TYPE_CAMCODER(itemType)) {
 					// Return camcorder
 					ResourceCentre.returnCamcorder(camcorderList);
-				} else if (itemType == 2) {
+				} else if (ITEM_TYPE_CHROMEBOOK(itemType)) {
 					// Return Chromebook
 					ResourceCentre.returnChromebook(chromebookList);
 				} else {
 					System.out.println("Invalid type");
 				}
 
-			} else if (option == 5) {
+			} else if (option == OPTION_QUIT()) {
 				System.out.println("Bye!");
 			} else {
 				System.out.println("Invalid option");
@@ -88,6 +88,65 @@ public class ResourceCentre {
 
 		}
 
+	}
+
+	/**
+	 * @param itemType
+	 * @return
+	 */
+	private static boolean ITEM_TYPE_CAMCODER(int itemType) {
+		return itemType == 1;
+	}
+
+	/**
+	 * @param itemType
+	 * @return
+	 */
+	private static boolean ITEM_TYPE_CHROMEBOOK(int itemType) {
+		return itemType == 2;
+	}
+
+	/**
+	 * @param itemType
+	 * @return
+	 */
+	private static boolean ITEM_TYPE_COMCORDER(int itemType) {
+		return ITEM_TYPE_CAMCODER(itemType);
+	}
+
+	/**
+	 * @return
+	 */
+	private static int OPTION_RETURN() {
+		return 4;
+	}
+
+	/**
+	 * @return
+	 */
+	private static int OPTION_LOAN() {
+		return 3;
+	}
+
+	/**
+	 * @return
+	 */
+	private static int OPTION_ADD() {
+		return 2;
+	}
+
+	/**
+	 * @return
+	 */
+	private static int OPTION_QUIT() {
+		return 5;
+	}
+
+	/**
+	 * @return
+	 */
+	private static int OPTION_VIEW() {
+		return 1;
 	}
 
 	/**
