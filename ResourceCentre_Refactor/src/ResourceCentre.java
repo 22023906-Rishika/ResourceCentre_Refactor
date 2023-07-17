@@ -2,6 +2,10 @@ import java.util.ArrayList;
 
 public class ResourceCentre {
 
+	private static final int OPTION_RETURN = OPTION_RETURN();
+	private static final int OPTION_LOAN = OPTION_LOAN();
+	private static final int OPTION_ADD = OPTION_ADD();
+	private static final int OPTION_VIEW = OPTION_VIEW();
 	private static final int OPTION_QUIT = OPTION_QUIT();
 
 	public static void main(String[] args) {
@@ -21,12 +25,12 @@ public class ResourceCentre {
 			ResourceCentre.menu();
 			option = Helper.readInt("Enter an option > ");
 
-			if (option == OPTION_VIEW()) {
+			if (option == OPTION_VIEW) {
 				// View all items
 				ResourceCentre.viewAllCamcorder(camcorderList);
 				ResourceCentre.viewAllChromebook(chromebookList);
 
-			} else if (option == OPTION_ADD()) {
+			} else if (option == OPTION_ADD) {
 				// Add a new item
 				ResourceCentre.setHeader("ADD");
 				itemTypeMenu();
@@ -49,7 +53,7 @@ public class ResourceCentre {
 					System.out.println("Invalid type");
 				}
 
-			} else if (option == OPTION_LOAN()) {
+			} else if (option == OPTION_LOAN) {
 				// Loan item
 				ResourceCentre.setHeader("LOAN");
 				itemTypeMenu();
@@ -66,7 +70,7 @@ public class ResourceCentre {
 					System.out.println("Invalid type");
 				}
 
-			} else if (option == OPTION_RETURN()) {
+			} else if (option == OPTION_RETURN) {
 				// Return item
 				ResourceCentre.setHeader("RETURN");
 				itemTypeMenu();
